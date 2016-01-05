@@ -36,7 +36,7 @@ class FlowerCommand(Command):
         env_options = filter(lambda x: x.startswith(self.ENV_VAR_PREFIX),
                              os.environ)
         for env_var_name in env_options:
-            name = env_var_name.replace(self.ENV_VAR_PREFIX, '', 1).lower()
+            name = env_var_name.replace(self.ENV_VAR_PREFIX, '', 1).replace('_', '-').lower()
             value = os.environ[env_var_name]
             option = options._options[name]
             if option.multiple:
